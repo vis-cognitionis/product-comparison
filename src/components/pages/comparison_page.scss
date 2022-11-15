@@ -1,0 +1,12 @@
+.cardsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  overflow-x: auto;
+  padding: 32px;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 16px;
+}
+.pageContainer {
+  padding: 60px;
+}
