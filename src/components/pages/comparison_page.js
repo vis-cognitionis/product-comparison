@@ -4,6 +4,7 @@ import useAxios from "axios-hooks";
 import ProductCard from "../product-card/card";
 import useWindowSize from "../../custom-hooks/useWindowSize";
 import "../pages/comparison_page.scss";
+import Loader from "./loading";
 
 export default function ComparisonPage() {
   const size = useWindowSize();
@@ -14,7 +15,20 @@ export default function ComparisonPage() {
   const [{ data, loading, error }, refetch] = useAxios(
     "https://fakestoreapi.com/products"
   );
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+          width: "100%",
+        }}
+      >
+        <Loader />
+      </div>
+    );
   if (error) return <p>Error!</p>;
 
   // console.log(data);
