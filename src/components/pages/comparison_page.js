@@ -3,13 +3,12 @@ import useAxios from "axios-hooks";
 
 import ProductCard from "../product-card/card";
 import useWindowSize from "../../custom-hooks/useWindowSize";
-import "../pages/comparison_page.scss";
 import Loader from "./loading";
 import CompareTablo from "../compare-tablo/compare_tablo";
+import "../pages/comparison_page.scss";
 
 export default function ComparisonPage() {
   const size = useWindowSize();
-  const [selectedProduct, setSelectedProduct] = useState("");
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [{ data, loading, error }, refetch] = useAxios(
     "https://fakestoreapi.com/products"
@@ -57,12 +56,8 @@ export default function ComparisonPage() {
               productType={item.category}
               productName={item.title}
               productPrice={item.price}
-              selectedProduct={selectedProduct}
               selectedProducts={selectedProducts}
               onClick={() => {
-                setSelectedProduct(item.id);
-                // setSelectedProducts((prev) => [...prev, item]);
-                // setSelectedProducts(selectedProducts.concat(item.id));
                 arrayHandler(item);
               }}
             />
