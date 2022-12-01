@@ -6,7 +6,6 @@ export default function ProductCard({
   productType,
   productName,
   productPrice,
-  selectedProduct,
   selectedProducts,
   productId,
   onClick,

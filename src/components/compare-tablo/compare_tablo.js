@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./compare_tablo_styled.scss";
 import useWindowSize from "../../custom-hooks/useWindowSize";
 
