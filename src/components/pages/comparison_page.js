@@ -5,13 +5,12 @@ import ProductCard from "../product-card/card";
 import useWindowSize from "../../custom-hooks/useWindowSize";
 import "../pages/comparison_page.scss";
 import Loader from "./loading";
+import CompareTablo from "../compare-tablo/compare_tablo";
 
 export default function ComparisonPage() {
   const size = useWindowSize();
   const [selectedProduct, setSelectedProduct] = useState("");
   const [selectedProducts, setSelectedProducts] = useState([]);
-  console.log(selectedProducts);
-
   const [{ data, loading, error }, refetch] = useAxios(
     "https://fakestoreapi.com/products"
   );
@@ -31,14 +30,15 @@ export default function ComparisonPage() {
     );
   if (error) return <p>Error!</p>;
 
-  // console.log(data);
-
   const arrayHandler = (item) => {
     const hasParentId = selectedProducts.find(
       (object) => item.id === object.id
     );
     if (!hasParentId) {
       setSelectedProducts((prev) => [...prev, item]);
+    }
+    if (hasParentId) {
+      setSelectedProducts(selectedProducts.filter((ele) => ele.id !== item.id));
     }
   };
 
@@ -58,6 +58,7 @@ export default function ComparisonPage() {
               productName={item.title}
               productPrice={item.price}
               selectedProduct={selectedProduct}
+              selectedProducts={selectedProducts}
               onClick={() => {
                 setSelectedProduct(item.id);
                 // setSelectedProducts((prev) => [...prev, item]);
@@ -68,6 +69,7 @@ export default function ComparisonPage() {
           );
         })}
       </div>
+      <CompareTablo products={selectedProducts} />
     </div>
   );
 }
