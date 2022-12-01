@@ -7,9 +7,12 @@ export default function ProductCard({
   productName,
   productPrice,
   selectedProduct,
+  selectedProducts,
   productId,
   onClick,
 }) {
+  const rule = selectedProducts.some((item) => item.id === productId);
+
   return (
     <div className="cardContainer">
       <img className="productImage" src={productImage} alt=""></img>
@@ -23,7 +26,7 @@ export default function ProductCard({
       <button
         className="productButton"
         style={{
-          background: productId === selectedProduct && "rgba(91, 49, 50, 0.7)",
+          background: rule && "rgba(91, 49, 50, 0.7)",
         }}
         onClick={onClick}
       >
