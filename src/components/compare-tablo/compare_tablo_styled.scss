@@ -1,0 +1,27 @@
+.tabloContent{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.tabloContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    overflow-x: auto;
+    padding: 32px;
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 16px;
+}
+
+.title{
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 16px;
+    padding: 0 20px;
+    text-align: left;
+    font-weight: 600;
+}
+.productContent{
+    width: 180px;
+}
