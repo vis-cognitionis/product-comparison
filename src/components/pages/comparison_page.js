@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useAxios from "axios-hooks";
 
 import ProductCard from "../product-card/card";
@@ -13,6 +13,16 @@ export default function ComparisonPage() {
   const [{ data, loading, error }, refetch] = useAxios(
     "https://fakestoreapi.com/products"
   );
+  const [showWarning, setShowWarning] = useState(false);
+
+  useEffect(() => {
+    selectedProducts.length >= 3 && setShowWarning(true);
+
+    return () => {
+      setShowWarning(false);
+    };
+  }, [selectedProducts]);
+
   if (loading)
     return (
       <div
@@ -33,16 +43,33 @@ export default function ComparisonPage() {
     const hasParentId = selectedProducts.find(
       (object) => item.id === object.id
     );
-    if (!hasParentId) {
-      setSelectedProducts((prev) => [...prev, item]);
+
+    const sameCategory = selectedProducts.find(
+      (object) => item.category !== object.category
+    );
+
+    if (!hasParentId || !sameCategory) {
+      setSelectedProducts((prev) => [...prev, item].slice(0, 3));
     }
-    if (hasParentId) {
+    if (hasParentId || sameCategory) {
       setSelectedProducts(selectedProducts.filter((ele) => ele.id !== item.id));
     }
   };
 
+  // console.log(selectedProducts.length);
+
   return (
     <div className="pageContainer">
+      {showWarning && (
+        <div className="warning">
+          <p>
+            You have reached the maximum number of products that can be
+            compared.
+          </p>
+          <button onClick={() => setShowWarning(false)}>close</button>
+        </div>
+      )}
+
       <div
         className="cardsContainer"
         style={{ width: `calc(${size.width}px - 180px)` }}
