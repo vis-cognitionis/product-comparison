@@ -14,7 +14,7 @@ export default function ProductCard({
 
   return (
     <div className="cardContainer">
-      <img className="productImage" src={productImage} alt=""></img>
+      <img className="productImage" src={productImage} alt="" />
       <div className="productInfosContainer">
         <p className="productType"> {productType}</p>
         <div className="productInfos">

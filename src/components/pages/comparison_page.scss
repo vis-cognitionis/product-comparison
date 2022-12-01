@@ -10,3 +10,11 @@
 .pageContainer {
   padding: 60px;
 }
+
+.warning {
+  display: flex;
+  flex-direction: row;
+  bottom: 20px;
+  color: rgb(197, 95, 11);
+  position: fixed;
+}
