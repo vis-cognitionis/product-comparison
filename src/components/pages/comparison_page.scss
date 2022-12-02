@@ -14,7 +14,17 @@
 .warning {
   display: flex;
   flex-direction: row;
+  align-items: center;
   bottom: 20px;
   color: rgb(197, 95, 11);
+  position: fixed;
+}
+
+.error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  bottom: 50px;
+  color: rgb(197, 11, 11);
   position: fixed;
 }

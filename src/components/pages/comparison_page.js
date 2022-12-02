@@ -6,6 +6,7 @@ import useWindowSize from "../../custom-hooks/useWindowSize";
 import Loader from "./loading";
 import CompareTablo from "../compare-tablo/compare_tablo";
 import "../pages/comparison_page.scss";
+import { IconErrorNotify, IconWarningNotify } from "../icons/notify_icons";
 
 export default function ComparisonPage() {
   const size = useWindowSize();
@@ -14,10 +15,10 @@ export default function ComparisonPage() {
     "https://fakestoreapi.com/products"
   );
   const [showWarning, setShowWarning] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   useEffect(() => {
     selectedProducts.length >= 3 && setShowWarning(true);
-
     return () => {
       setShowWarning(false);
     };
@@ -48,25 +49,35 @@ export default function ComparisonPage() {
       (object) => item.category !== object.category
     );
 
-    if (!hasParentId || !sameCategory) {
-      setSelectedProducts((prev) => [...prev, item].slice(0, 3));
-    }
-    if (hasParentId || sameCategory) {
-      setSelectedProducts(selectedProducts.filter((ele) => ele.id !== item.id));
-    }
+    hasParentId || sameCategory
+      ? setSelectedProducts(
+          selectedProducts.filter((ele) => ele.id !== item.id)
+        )
+      : setSelectedProducts((prev) => [...prev, item].slice(0, 3));
+
+    sameCategory && selectedProducts.length < 3 && setShowError(true);
   };
 
-  // console.log(selectedProducts.length);
+  // console.log(selectedProducts);
 
   return (
     <div className="pageContainer">
       {showWarning && (
         <div className="warning">
+          <IconWarningNotify />
           <p>
             You have reached the maximum number of products that can be
             compared.
           </p>
           <button onClick={() => setShowWarning(false)}>close</button>
+        </div>
+      )}
+
+      {showError && (
+        <div className="error">
+          <IconErrorNotify />
+          <p>You can only compare products in the same category. </p>
+          <button onClick={() => setShowError(false)}>close</button>
         </div>
       )}
 
