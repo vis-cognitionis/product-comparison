@@ -21,7 +21,11 @@ export default function ProductCard({
       <div className="productInfosContainer">
         <p className="productType"> {productType}</p>
         <div className="productInfos">
-          <p className="productName"> {productName}</p>
+          <p className="productName">
+            {productName.length > 20
+              ? productName.slice(0, 22) + "..."
+              : productName}
+          </p>
           <p className="productPrice"> {productPrice}$</p>
         </div>
       </div>

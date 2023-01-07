@@ -4,9 +4,10 @@
   gap: 32px;
   overflow-x: auto;
   padding: 32px;
-  border: 1px solid rgb(224, 224, 224);
+  border: 1px solid #e0e0e0;
   border-radius: 16px;
 }
+
 .pageContainer {
   padding: 60px;
 }
@@ -15,16 +16,28 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   bottom: 20px;
-  color: rgb(197, 95, 11);
+  color: #c55f0b;
   position: fixed;
+  gap: 10px;
 }
 
 .error {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
   bottom: 50px;
-  color: rgb(197, 11, 11);
+  color: #c50b0b;
   position: fixed;
+}
+
+.closeButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0px;
+  margin-top: 4px;
 }
