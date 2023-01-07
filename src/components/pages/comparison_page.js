@@ -7,6 +7,7 @@ import Loader from "./loading";
 import CompareTablo from "../compare-tablo/compare_tablo";
 import "../pages/comparison_page.scss";
 import { IconErrorNotify, IconWarningNotify } from "../icons/notify_icons";
+import { IconClose } from "../icons/general_icons";
 
 export default function ComparisonPage() {
   const size = useWindowSize();
@@ -69,7 +70,9 @@ export default function ComparisonPage() {
             You have reached the maximum number of products that can be
             compared.
           </p>
-          <button onClick={() => setShowWarning(false)}>close</button>
+          <button className="closeButton" onClick={() => setShowWarning(false)}>
+            <IconClose fill={"#c55f0b"} />
+          </button>
         </div>
       )}
 
@@ -77,7 +80,9 @@ export default function ComparisonPage() {
         <div className="error">
           <IconErrorNotify />
           <p>You can only compare products in the same category. </p>
-          <button onClick={() => setShowError(false)}>close</button>
+          <button className="closeButton" onClick={() => setShowError(false)}>
+            <IconClose fill={"#C50B0B"} />
+          </button>
         </div>
       )}
 

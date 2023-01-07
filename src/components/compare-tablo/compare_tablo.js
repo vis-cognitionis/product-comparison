@@ -3,7 +3,7 @@ import "./compare_tablo_styled.scss";
 import useWindowSize from "../../custom-hooks/useWindowSize";
 
 export default function CompareTablo(props) {
-  const size = useWindowSize();
+  //const size = useWindowSize();
   //console.log(props.products);
 
   return (

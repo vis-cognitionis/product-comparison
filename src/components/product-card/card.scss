@@ -34,9 +34,9 @@
 .productInfos {
   display: flex;
   flex-direction: row;
-  width: auto;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  margin-left: -2px;
 }
 
 .productButton {
@@ -66,7 +66,9 @@
 }
 
 .productType {
-  width: 60px;
+  display: flex;
+  align-self: flex-start;
+  width: auto;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
@@ -89,13 +91,10 @@
 }
 
 .productPrice {
-  width: 38px;
-  height: 15px;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  margin: 0;
   color: #424242;
 }
