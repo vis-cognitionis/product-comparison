@@ -22,11 +22,13 @@ export default function CompareTable({ products, onClick }) {
           })}
       </div>
       <button
-        disabled={products.length < 3 ? true : false}
+        disabled={products.length < 1 ? true : false}
         className="removeAll"
         onClick={onClick}
       >
-        <p className="removeText"> REMOVE ALL</p>
+        <p className="removeText">
+          {products.length < 2 ? "REMOVE" : "REMOVE ALL"}
+        </p>
       </button>
     </div>
   );
