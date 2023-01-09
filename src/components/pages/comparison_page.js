@@ -4,10 +4,10 @@ import useAxios from "axios-hooks";
 import ProductCard from "../product-card/card";
 import useWindowSize from "../../custom-hooks/useWindowSize";
 import Loader from "./loading";
-import CompareTablo from "../compare-tablo/compare_tablo";
-import "../pages/comparison_page.scss";
 import { IconErrorNotify, IconWarningNotify } from "../icons/notify_icons";
 import { IconClose } from "../icons/general_icons";
+import CompareTable from "../compare-tablo/compare_table";
+import "../pages/comparison_page.scss";
 
 export default function ComparisonPage() {
   const size = useWindowSize();
@@ -59,8 +59,6 @@ export default function ComparisonPage() {
     sameCategory && selectedProducts.length < 3 && setShowError(true);
   };
 
-  // console.log(selectedProducts);
-
   return (
     <div className="pageContainer">
       {showWarning && (
@@ -107,7 +105,12 @@ export default function ComparisonPage() {
           );
         })}
       </div>
-      <CompareTablo products={selectedProducts} />
+      <CompareTable
+        products={selectedProducts}
+        onClick={() => {
+          setSelectedProducts([]);
+        }}
+      />
     </div>
   );
 }
