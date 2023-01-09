@@ -23,7 +23,7 @@ export default function ProductCard({
         <div className="productInfos">
           <p className="productName">
             {productName.length > 20
-              ? productName.slice(0, 22) + "..."
+              ? productName.slice(0, 25) + "..."
               : productName}
           </p>
           <p className="productPrice"> {productPrice}$</p>
