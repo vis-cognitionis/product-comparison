@@ -6,7 +6,6 @@ export default function ProductCard({
   productType,
   productName,
   productPrice,
-  selectedProduct,
   selectedProducts,
   productId,
   onClick,
@@ -14,12 +13,19 @@ export default function ProductCard({
   const rule = selectedProducts.some((item) => item.id === productId);
 
   return (
-    <div className="cardContainer">
-      <img className="productImage" src={productImage} alt=""></img>
+    <div
+      className="cardContainer"
+      style={{ boxShadow: rule && "0px 0px 24px rgba(0, 0, 0, 0.5)" }}
+    >
+      <img className="productImage" src={productImage} alt="" />
       <div className="productInfosContainer">
         <p className="productType"> {productType}</p>
         <div className="productInfos">
-          <p className="productName"> {productName}</p>
+          <p className="productName">
+            {productName.length > 20
+              ? productName.slice(0, 25) + "..."
+              : productName}
+          </p>
           <p className="productPrice"> {productPrice}$</p>
         </div>
       </div>
@@ -30,7 +36,7 @@ export default function ProductCard({
         }}
         onClick={onClick}
       >
-        <p className="buttonName"> COMPARE</p>
+        <p className="buttonName"> {rule ? "REMOVE" : "COMPARE"}</p>
       </button>
     </div>
   );
