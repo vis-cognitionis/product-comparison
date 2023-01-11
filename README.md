@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Product comparison build using React + JS + SCSS
+Product comparison project was built using React + JS + SCSS
 
 ## Live Link
 
