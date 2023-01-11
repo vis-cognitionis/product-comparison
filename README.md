@@ -6,4 +6,4 @@ Product comparison build using React + JS + SCSS
 
 ## Live Link
 
-[product-comparison]()
+[product-comparison](https://product-comparison-react.netlify.app/)
